@@ -3,7 +3,7 @@ name: Customer Service CI
 on:
   push:
     branches:
-      - main
+      - master
 
   pull_request:
     paths:
