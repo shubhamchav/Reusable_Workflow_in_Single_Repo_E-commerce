@@ -1,1 +1,39 @@
+name: Reusable Java CI
 
+on:
+  workflow_call:
+    inputs:
+      service-name:
+        required: true
+        type: string
+
+      working-directory:
+        required: true
+        type: string
+
+      java-version:
+        required: false
+        type: string
+        default: "17"
+
+jobs:
+  build:
+    name: Build ${{ inputs.service-name }}
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: ${{ inputs.java-version }}
+          distribution: temurin
+          cache: maven
+
+      - name: Build and Test
+        working-directory: ${{ inputs.working-directory }}
+        run: |
+          mvn clean verify
