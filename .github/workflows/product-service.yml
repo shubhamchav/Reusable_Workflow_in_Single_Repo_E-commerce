@@ -3,7 +3,7 @@ name: Product Service CI
 on:
   push:
     branches:
-      - master
+      - main
 
   pull_request:
     paths:
