@@ -1,1 +1,19 @@
+name: Order Service CI
 
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    paths:
+      - 'order-service/**'
+
+jobs:
+  order-service-ci:
+    uses: ./.github/workflows/reusable-java-ci.yml
+
+    with:
+      service-name: "Order Service"
+      working-directory: "order-service"
+      java-version: "17"
