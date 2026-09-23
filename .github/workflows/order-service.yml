@@ -3,7 +3,7 @@ name: Order Service CI
 on:
   push:
     branches:
-      - main
+      - master
 
   pull_request:
     paths:
@@ -16,4 +16,4 @@ jobs:
     with:
       service-name: "Order Service"
       working-directory: "order-service"
-      java-version: "17"
+      java-version: "21"
